@@ -4,7 +4,10 @@ RUN set -xe; \
     apk add --no-cache nodejs python3 supervisor yarn xmlsec netcat-openbsd postgresql-client; \
     pip3 install --upgrade pip
 
-RUN wget -O powerdns-admin.tar.gz https://github.com/timja/PowerDNS-Admin/archive/6b1282e710a4031659ed340ca7ef0518b4893f89.tar.gz \
+ARG SOURCE_ORG=ngoduykhanh
+ARG VERSION=ee2ed65ff9d27fe06a73c1238b52e7912419620f
+
+RUN wget -O powerdns-admin.tar.gz https://github.com/${SOURCE_ORG}/PowerDNS-Admin/archive/${VERSION}.tar.gz \
     && tar -xzf powerdns-admin.tar.gz \
     && mv PowerDNS-Admin-* /powerdns-admin/ \
     && rm powerdns-admin.tar.gz
